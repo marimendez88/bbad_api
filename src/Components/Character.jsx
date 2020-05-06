@@ -1,48 +1,54 @@
 import React, { Fragment } from "react";
-import { Grid, Box, Typography } from "@material-ui/core/";
+import {
+	makeStyles,
+	Typography,
+	Card,
+	CardContent,
+	CardMedia,
+	CardActionArea,
+} from "@material-ui/core/";
+
+const useStyles = makeStyles({
+	root: {
+		maxWidth: 172,
+		margin: 20,
+	},
+	media: {
+		height: 0,
+		paddingTop: "56.25%", // 16:9
+	},
+	title: {
+		fontSize: 18,
+	},
+	pos: {
+		marginBottom: 10,
+	},
+});
 
 function Character({ character }) {
-	const { loading = false } = character;
+	const { name, occupation, status, birthday, img } = character;
+	const classes = useStyles();
 	return (
 		<Fragment>
-			<Grid container wrap="nowrap">
-				{(loading ? Array.from(new Array(3)) : character).map((item, index) => (
-					<Box key={index} width={210} marginRight={0.5} my={5}>
-						{item ? (
-							<img
-								style={{ width: 210, height: 118 }}
-								alt={item.title}
-								src={item.src}
-							/>
-						) : (
-							{
-								/* <Skeleton variant="rect" width={210} height={118} /> */
-							}
-						)}
-
-						{item ? (
-							<Box pr={2}>
-								<Typography gutterBottom variant="body2">
-									{item.title}
-								</Typography>
-								<Typography
-									display="block"
-									variant="caption"
-									color="textSecondary"
-								>
-									{item.channel}
-								</Typography>
-								<Typography variant="caption" color="textSecondary">
-									{`${item.views} • ${item.createdAt}`}
-								</Typography>
-							</Box>
-						) : (
-							<Box pt={0.5}>{/* <Skeleton />
-								<Skeleton width="60%" /> */}</Box>
-						)}
-					</Box>
-				))}
-			</Grid>
+			<Card className={classes.root}>
+				<CardActionArea>
+					<CardMedia className={classes.media} image={img} title={name} />
+					<CardContent>
+						<Typography className={classes.title} color="textSecondary">
+							{name}
+						</Typography>
+						<Typography className={classes.pos} color="textSecondary">
+							{occupation}
+						</Typography>
+						<Typography className={classes.pos} color="textSecondary">
+							{status}
+						</Typography>
+						<Typography className={classes.pos} color="textSecondary">
+							{birthday}
+						</Typography>
+					</CardContent>
+				</CardActionArea>
+			</Card>
 		</Fragment>
 	);
 }

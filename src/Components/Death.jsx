@@ -44,8 +44,6 @@ function Deaths({ death }) {
 					</Typography>
 				</CardContent>
 			</Card>
-
-			<br></br>
 		</Fragment>
 	);
 }

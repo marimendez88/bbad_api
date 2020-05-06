@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 		display: "flex",
 		flexWrap: "wrap",
-		justifyContent: "space-around",
 		overflow: "hidden",
 	},
 	paper: {
@@ -39,14 +38,14 @@ function Home() {
 	return (
 		<Fragment>
 			<div className={classes.root}>
-				<Grid container spacing={2}>
+				<Grid container spacing={1}>
 					<Grid item xs={8}>
 						<Paper className={classes.paper}>
-							<Typography>
-								<h3 className=" MuiTypography-h3 MuiTypography-colorTextPrimary">
-									Personajes
-								</h3>
-							</Typography>
+							<GridList cellHeight="auto" className={classes.gridList}>
+								{data.map((character) => (
+									<Character character={character} key={character.char_id} />
+								))}
+							</GridList>
 						</Paper>
 					</Grid>
 					<Grid item xs={4}>
