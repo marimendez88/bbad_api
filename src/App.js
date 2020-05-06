@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Header from "./Components/Header";
 import Home from "./Components/Home";
+import Episodes from "./Components/Episodes";
+
 import "./App.css";
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
 				<Header />
 				<Switch>
 					<Route path="/" exact component={Home} />
-					{/* <Route path="/episodes" exact component={Episodes} /> */}
+					<Route path="/episodes" exact component={Episodes} />
 				</Switch>
 			</BrowserRouter>
 		</Fragment>
