@@ -30,11 +30,42 @@ const useHome = () => {
 		};
 		getDeaths();
 	}, []);
+	const sortByName = () => {
+		let sortedCharacters = characters.sort(function (a, b) {
+			var textA = a.name.toUpperCase();
+			var textB = b.name.toUpperCase();
+			return textA < textB ? -1 : textA > textB ? 1 : 0;
+		});
+
+		setCharacters([...sortedCharacters]);
+	};
+	const sortByPortrayed = () => {
+		let sortedCharacters = characters.sort(function (a, b) {
+			var textA = a.portrayed.toUpperCase();
+			var textB = b.portrayed.toUpperCase();
+			return textA < textB ? -1 : textA > textB ? 1 : 0;
+		});
+
+		setCharacters([...sortedCharacters]);
+	};
+
+	const sortByBirthday = () => {
+		let sortedCharacters = characters.sort(function (a, b) {
+			var textA = a.birthday.toUpperCase();
+			var textB = b.birthday.toUpperCase();
+			return textA < textB ? -1 : textA > textB ? 1 : 0;
+		});
+
+		setCharacters([...sortedCharacters]);
+	};
 
 	return {
 		characters,
 		deaths,
 		count,
+		sortByName,
+		sortByBirthday,
+		sortByPortrayed,
 	};
 };
 

@@ -27,7 +27,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Home() {
 	const classes = useStyles();
-	const { characters, deaths, count } = useHome();
+	const {
+		characters,
+		deaths,
+		count,
+		sortByPortrayed,
+		sortByBirthday,
+		sortByName,
+	} = useHome();
 	const [data, setData] = useState([]);
 	const [load, setLoad] = useState(false);
 
@@ -41,6 +48,35 @@ function Home() {
 				<Grid container spacing={1}>
 					<Grid item xs={8}>
 						<Paper className={classes.paper}>
+							<h3>Sort By </h3>
+
+							<Button
+								variant="contained"
+								color="default"
+								key="name"
+								value="name"
+								onClick={sortByName}
+							>
+								NAME
+							</Button>
+							<Button
+								variant="contained"
+								color="default"
+								key="birthday"
+								value="birthday"
+								onClick={sortByBirthday}
+							>
+								BIRTHDAY
+							</Button>
+							<Button
+								variant="contained"
+								color="default"
+								key="portrayed"
+								value="portrayed"
+								onClick={sortByPortrayed}
+							>
+								PORTRAYERED
+							</Button>
 							<GridList cellHeight="auto" className={classes.gridList}>
 								{data.map((character) => (
 									<Character character={character} key={character.char_id} />

@@ -58,17 +58,7 @@ const Episodes = () => {
 							))}
 						</Select>
 					</FormControl>
-					<div>
-						<h3>FILTER</h3>
-						<select>
-							<option value="" />
-							{options.map((option) => (
-								<option key={option} value={option}>
-									{option}
-								</option>
-							))}
-						</select>
-					</div>
+
 					<GridList cellHeight="auto" className={classes.gridList}>
 						{episodes.map((data) => (
 							<Episode data={data} key={data.episode_id} />
